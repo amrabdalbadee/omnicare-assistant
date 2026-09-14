@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    container_name: omnicare-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATA_DIR: /data
+    volumes:
+      # Bind-mounted so claims filed through the assistant persist on the host
+      # and survive a container rebuild.
+      - ./data:/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: omnicare-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      # Service name, not localhost: the frontend resolves the backend over
+      # the compose network.
+      BACKEND_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
