@@ -99,7 +99,7 @@ Set two variables in `.env`. No code changes.
 
 | `LLM_PROVIDER` | `LLM_MODEL` | Key required |
 |---|---|---|
-| `groq` (default) | `llama-3.3-70b-versatile` | `GROQ_API_KEY` |
+| `groq` (default) | `gpt-oss-120b` | `GROQ_API_KEY` |
 | `anthropic` | `claude-sonnet-4-5` | `ANTHROPIC_API_KEY` |
 | `openai` | `gpt-4o-mini` | `OPENAI_API_KEY` |
 | `ollama` | `qwen2.5:7b` | none — set `OLLAMA_BASE_URL` |
